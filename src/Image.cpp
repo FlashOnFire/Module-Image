@@ -1,5 +1,6 @@
 #include "Image.h"
 #include "cassert"
+#include "Pixel.h"
 
 Image::Image() {
     dimx = 0;
@@ -50,6 +51,28 @@ void Image::effacer(Pixel couleur) {
 
 void Image::testRegression() {
     Image testConstructeurDef;
-    int const dimensionX = 0, dimensionY = 0;
+    int const dimensionX = 10, dimensionY = 10;
     Image testConstructeurArg(dimensionX, dimensionY);
+
+    Pixel blanc(255, 255, 255);
+    Pixel red(255, 0, 0);
+    Pixel noir;
+
+    assert(testConstructeurArg.getPix(1, 1).r == 0 && testConstructeurArg.getPix(1, 1).g == 0 &&
+           testConstructeurArg.getPix(1, 1).b == 0);
+
+    testConstructeurArg.dessinerRectangle(3, 3, 6, 6, blanc);
+
+    assert(testConstructeurArg.getPix(5, 5).r == 255 && testConstructeurArg.getPix(5, 5).g == 255 &&
+           testConstructeurArg.getPix(5, 5).b == 255);
+
+    testConstructeurArg.effacer(noir);
+
+    assert(testConstructeurArg.getPix(5, 5).r == 0 && testConstructeurArg.getPix(5, 5).g == 0 &&
+           testConstructeurArg.getPix(5, 5).b == 0);
+
+    testConstructeurArg.setPix(2, 2, red);
+
+    assert(testConstructeurArg.getPix(2, 2).r == 255 && testConstructeurArg.getPix(2, 2).g == 0 &&
+           testConstructeurArg.getPix(2, 2).b == 0);
 }
