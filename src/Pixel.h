@@ -15,6 +15,7 @@ struct Pixel {
     /**
      * @brief Constructeur de la classe:
      * initialise r,g,b avec les paramètres
+     *
      * @param nr : Entier entre 0 et 255
      * @param ng : Entier entre 0 et 255
      * @param nb : Entier entre 0 et 255
