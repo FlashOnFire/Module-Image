@@ -6,7 +6,7 @@ class Pixel {
     unsigned char r,g,b;
 
     Pixel();
-    Pixel(unsigned char nr, unsigned char ng, unsigned char ng);
+    Pixel(unsigned char nr, unsigned char ng, unsigned char nb);
 };
 
 
