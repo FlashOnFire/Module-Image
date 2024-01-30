@@ -48,7 +48,7 @@ void Image::dessinerRectangle(int Xmin, int Ymin, int Xmax, int Ymax, Pixel coul
 
     for (int y = Ymin; y < Ymax; y++) {
         for (int x = Xmin; x < Xmax; x++) {
-            tab[y * dimx + x] = couleur;
+            setPix(x, y, couleur);
         }
     }
 }
