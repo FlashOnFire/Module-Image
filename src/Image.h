@@ -53,7 +53,7 @@ public:
      *
      * @param x : Entier
      * @param y : Entier
-     * @param couleur
+     * @param couleur Le nouveau pixel
      */
     void setPix(int x, int y, Pixel couleur);
 
@@ -71,6 +71,10 @@ public:
     /**
      * @brief Efface l'image en la remplissant de la couleur en paramètre
      *
+     * @param Xmin : Entier
+     * @param Ymin : Entier
+     * @param Xmax : Entier
+     * @param Ymax : Entier
      * @param couleur : Pixel
      */
     void effacer(Pixel couleur);
