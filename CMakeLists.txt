@@ -4,5 +4,5 @@ project(module_image)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(module_image
-        src/main.cpp
+        src/mainTest.cpp
         src/Pixel.h)
