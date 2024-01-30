@@ -6,7 +6,7 @@
 
 class Image {
 private:
-    Pixel tab[];
+    Pixel* tab;
     int dimx, dimy;
 public:
     Image();

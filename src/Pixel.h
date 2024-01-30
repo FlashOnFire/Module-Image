@@ -3,10 +3,13 @@
 
 
 struct Pixel {
-    unsigned char r,g,b;
+    unsigned char r, g, b;
 
-    Pixel();
-    Pixel(unsigned char nr, unsigned char ng, unsigned char nb);
+    Pixel() : r(0), g(0), b(0) {
+    };
+
+    Pixel(unsigned char nr, unsigned char ng, unsigned char nb) : r(nr), g(ng), b(nb) {
+    };
 };
 
 
