@@ -2,7 +2,7 @@
 #define _PIXEL_H
 
 
-class Pixel {
+struct Pixel {
     unsigned char r,g,b;
 
     Pixel();
