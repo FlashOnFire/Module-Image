@@ -6,5 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(module_image
         src/mainTest.cpp
         src/Pixel.h
+        src/Pixel.cpp
         src/Image.h
-        src/Image.cpp)
+        src/Image.cpp
+)
