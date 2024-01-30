@@ -25,7 +25,7 @@ public:
     Image(int dimensionX, int dimensionY);
 
     /**
-     * Désallocation de la mémoire du tableau de pixels et mise a jour des champs dimX et dimY à 0
+     * @brief Désallocation de la mémoire du tableau de pixels et mise a jour des champs dimX et dimY à 0
      */
     ~Image();
 
