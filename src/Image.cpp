@@ -80,7 +80,7 @@ void Image::testRegression() {
     assert(testConstructeurArg.getPix(5, 5).r == 0 && testConstructeurArg.getPix(5, 5).g == 0 &&
            testConstructeurArg.getPix(5, 5).b == 0);
 
-    testConstructeurArg.setPix(2, 2, red);
+    testConstructeurArg.setPix(2, 2, rouge);
 
     assert(testConstructeurArg.getPix(2, 2).r == 255 && testConstructeurArg.getPix(2, 2).g == 0 &&
            testConstructeurArg.getPix(2, 2).b == 0);
