@@ -8,7 +8,7 @@ Image::Image() {
     tab = nullptr;
 }
 
-Image::Image(int dimensionX, int dimensionY) : dimx(dimensionX), dimy(dimensionY) {
+Image::Image(const int dimensionX, const int dimensionY) : dimx(dimensionX), dimy(dimensionY) {
     tab = new Pixel[dimx * dimy];
 }
 
@@ -21,25 +21,33 @@ Image::~Image() {
     dimy = 0;
 }
 
-Pixel &Image::getPix(int x, int y) {
-    assert((x >= 0 && x < dimx) && (y >= 0 && y < dimy));
+Pixel& Image::getPix(int x, int y) {
+    assert(x >= 0 && x < dimx);
+    assert(y >= 0 && y < dimy);
+
     return tab[y * dimx + x];
 }
 
 Pixel Image::getPix(int x, int y) const {
-    assert((x >= 0 && x < dimx) && (y >= 0 && y < dimy));
+    assert(x >= 0 && x < dimx);
+    assert(y >= 0 && y < dimy);
+
     return tab[y * dimx + x];
 }
 
 void Image::setPix(int x, int y, Pixel couleur) {
-    assert((x >= 0 && x < dimx) && (y >= 0 && y < dimy));
+    assert(x >= 0 && x < dimx);
+    assert(y >= 0 && y < dimy);
+
     tab[y * dimx + x] = couleur;
 }
 
 void Image::dessinerRectangle(int Xmin, int Ymin, int Xmax, int Ymax, Pixel couleur) {
-    assert((Xmin >= 0 && Xmax <= dimx) && (Ymin >= 0 && Ymax <= dimy));
-    for (int x = Xmin; x < Xmax; x++) {
-        for (int y = Ymin; y < Ymax; y++) {
+    assert(Xmin >= 0 && Xmax <= dimx);
+    assert(Ymin >= 0 && Ymax <= dimy);
+
+    for (int y = Ymin; y < Ymax; y++) {
+        for (int x = Xmin; x < Xmax; x++) {
             tab[y * dimx + x] = couleur;
         }
     }
@@ -51,11 +59,12 @@ void Image::effacer(Pixel couleur) {
 
 void Image::testRegression() {
     Image testConstructeurDef;
-    int const dimensionX = 10, dimensionY = 10;
+    const int dimensionX = 0;
+    const int dimensionY = 0;
     Image testConstructeurArg(dimensionX, dimensionY);
 
     Pixel blanc(255, 255, 255);
-    Pixel red(255, 0, 0);
+    Pixel rouge(255, 0, 0);
     Pixel noir;
 
     assert(testConstructeurArg.getPix(1, 1).r == 0 && testConstructeurArg.getPix(1, 1).g == 0 &&
