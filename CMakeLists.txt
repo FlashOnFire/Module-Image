@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-add_executable(module_image
+add_executable(test
         src/mainTest.cpp
         src/Pixel.h
         src/Image.h
