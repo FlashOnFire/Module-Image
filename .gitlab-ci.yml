@@ -27,12 +27,14 @@ pages:
     # Lancement du script
     #- cat evalModuleImage.py
     - echo "a" | python evalModuleImage.py P1234567.tar.gz
+    - mkdir public
+    - mv *.tar.gz public/
 
 
   # Définition des règles pour le job
   artifacts:
     paths:
-      - '*.tar.gz'
+      - public
   only:
     - main
 
