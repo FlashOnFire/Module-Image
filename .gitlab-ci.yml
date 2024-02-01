@@ -32,7 +32,7 @@ pages:
   # Définition des règles pour le job
   artifacts:
     paths:
-      - public
+      - '*.tar.gz'
   only:
     - main
 
