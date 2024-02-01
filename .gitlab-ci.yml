@@ -1,0 +1,38 @@
+# Utilisation de l'image Docker avec Python et système d'exploitation de base
+image: python:3.8
+
+pages:
+  # Définition du script qui sera exécuté dans le job
+  script:
+    # Mettre à jour la liste des paquets disponibles et installation
+    - apt update  
+    - apt install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libpng-dev libglew-dev cmake doxygen valgrind build-essential 
+
+    # Test de commandes python
+    - python --version
+    - g++ --version
+
+    # Creation de l'archive
+    - liste=$(ls)
+    - echo $liste
+    - mkdir P1234567
+    - mv $liste P1234567
+    - ls
+    - tar cfvz P1234567.tar.gz P1234567
+
+    # récupération du script
+    - wget -O evalModuleImage.py https://forge.univ-lyon1.fr/Alexandre.Meyer/L2_ConceptionDevApp/-/raw/master/TD_moduleImage/evalModuleImage.py?ref_type=heads
+    - ls -l
+
+    # Lancement du script
+    #- cat evalModuleImage.py
+    - python evalModuleImage.py P1234567.tar.gz
+
+
+  # Définition des règles pour le job
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
