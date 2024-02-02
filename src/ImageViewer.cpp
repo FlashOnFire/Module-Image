@@ -44,7 +44,7 @@ void ImageViewer::afficher(const Image& im) {
         SDL_FreeSurface(surface);
     }
 
-    surface = SDL_CreateRGBSurfaceFrom(im.tab, im.dimx, im.dimy, 24, im.dimx * 3, 0x0000ff, 0x00ff00, 0xff0000, 0);
+    surface = SDL_CreateRGBSurfaceFrom(im.tab, static_cast<int>(im.dimx), static_cast<int>(im.dimy), 24, static_cast<int>(im.dimx) * 3, 0x0000ff, 0x00ff00, 0xff0000, 0);
 
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
@@ -83,11 +83,10 @@ void ImageViewer::afficher(const Image& im) {
             }
         }
 
-
-        dstRect.w = im.dimx * zoom;
-        dstRect.h = im.dimy * zoom;
-        dstRect.x = 100.0 - dstRect.w / 2.0;
-        dstRect.y = 100.0 - dstRect.h / 2.0;
+        dstRect.w = static_cast<int>(static_cast<float>(im.dimx) * zoom);
+        dstRect.h = static_cast<int>(static_cast<float>(im.dimy) * zoom);
+        dstRect.x = static_cast<int>(100.0 - dstRect.w / 2.0);
+        dstRect.y = static_cast<int>(100.0 - dstRect.h / 2.0);
 
         SDL_RenderCopy(renderer, texture, nullptr, &dstRect);
         SDL_RenderPresent(renderer);
