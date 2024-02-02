@@ -65,7 +65,7 @@ public:
      * @param y : Entier naturel
      * @param couleur Le nouveau pixel
      */
-    void setPix(unsigned int x, unsigned int y, Pixel couleur);
+    void setPix(unsigned int x, unsigned int y, const Pixel &couleur);
 
     /**
      * @brief Dessine un rectangle plein, de la couleur donnée, sur l'image
@@ -76,14 +76,14 @@ public:
      * @param Ymax : Entier naturel
      * @param couleur : Pixel
      */
-    void dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, Pixel couleur);
+    void dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, const Pixel &couleur);
 
     /**
      * @brief Efface l'image en la remplissant de la couleur en paramètre
      *
      * @param couleur : Pixel
      */
-    void effacer(Pixel couleur);
+    void effacer(const Pixel &couleur);
 
     /**
      * @brief Sauvegarde l'instance de l'image dans un fichier
@@ -102,7 +102,7 @@ public:
     /**
      * @brief Affiche les pixels de toute l'image dans la console
      */
-    void afficherConsole();
+    void afficherConsole() const;
 
     /**
      * @brief Effectue une série de tests de régression vérifiant que toutes les fonctions fonctionnent et

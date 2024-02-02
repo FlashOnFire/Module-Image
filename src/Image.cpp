@@ -38,7 +38,7 @@ Pixel Image::getPix(unsigned int x, unsigned int y) const {
     return tab[y * dimx + x];
 }
 
-void Image::setPix(unsigned int x, unsigned int y, Pixel couleur) {
+void Image::setPix(unsigned int x, unsigned int y, const Pixel &couleur) {
     assert(x < dimx);
     assert(y < dimy);
 
@@ -46,7 +46,7 @@ void Image::setPix(unsigned int x, unsigned int y, Pixel couleur) {
 }
 
 void
-Image::dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, Pixel couleur) {
+Image::dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, const Pixel &couleur) {
     assert(Xmax <= dimx);
     assert(Ymax <= dimy);
 
@@ -57,7 +57,7 @@ Image::dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax
     }
 }
 
-void Image::effacer(Pixel couleur) {
+void Image::effacer(const Pixel &couleur) {
     dessinerRectangle(0, 0, dimx, dimy, couleur);
 }
 
@@ -101,11 +101,11 @@ void Image::ouvrir(const std::string& filename) {
     std::cout << "Lecture de l'image " << filename << " ... OK\n";
 }
 
-void Image::afficherConsole() {
+void Image::afficherConsole() const {
     std::cout << dimx << " " << dimy << std::endl;
     for (unsigned int y = 0; y < dimy; ++y) {
         for (unsigned int x = 0; x < dimx; ++x) {
-            Pixel& pix = getPix(x, y);
+            Pixel pix = getPix(x, y);
             pix.afficherPixel();
         }
         std::cout << std::endl;
@@ -122,9 +122,9 @@ void Image::testRegression() {
     assert(testConstructeurArg.dimx == dimensionX);
     assert(testConstructeurArg.dimy == dimensionY);
 
-    Pixel blanc(255, 255, 255);
-    Pixel rouge(255, 0, 0);
-    Pixel noir;
+    const Pixel blanc(255, 255, 255);
+    const Pixel rouge(255, 0, 0);
+    const Pixel noir;
 
     assert(testConstructeurArg.getPix(1, 1).r == 0);
     assert(testConstructeurArg.getPix(1, 1).g == 0);
