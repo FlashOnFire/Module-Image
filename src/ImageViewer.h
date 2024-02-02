@@ -8,7 +8,7 @@
 /**
  * @class ImageViewer
  *
- * @brief Permet l'affichage de l'image à partir d'SDL2
+ * @brief Permet l'affichage de l'image à partir de SDL2
  */
 class ImageViewer {
 private:
@@ -20,7 +20,7 @@ private:
 public:
 
     /**
-     * @brief Initialise SDL2 et les attributs d'ImageViewer
+     * @brief Initialise SDL2
      */
     ImageViewer();
 
@@ -30,9 +30,9 @@ public:
     ~ImageViewer();
 
     /**
-     * @brief Affiche l'image dans une fenêtre de SDL2
+     * @brief Affiche l'image dans une fenêtre SDL2
      *
-     * @param im : Image
+     * @param im : Référence sur l'image
      */
     void afficher(const Image &im);
 };

@@ -11,8 +11,6 @@ class ImageViewer;
  * @class Image
  *
  * @brief Gère une image sous la forme d'un tableau de Pixels
- *
- * S'occupe de la gestion de l'image
  */
 class Image {
 friend ImageViewer;
