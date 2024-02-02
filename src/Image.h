@@ -13,11 +13,12 @@ class ImageViewer;
  * @brief Gère une image sous la forme d'un tableau de Pixels
  */
 class Image {
-friend ImageViewer;
+    friend ImageViewer;
 
 private:
     Pixel* tab;
     unsigned int dimx, dimy;
+
 public:
     /**
      * @brief Initialise dimx et dim y à 0
@@ -56,7 +57,7 @@ public:
      * @param y : Entier naturel
      * @return Une copie du Pixel
      */
-    Pixel getPix(unsigned int x,unsigned int y) const;
+    Pixel getPix(unsigned int x, unsigned int y) const;
 
     /**
      * @brief Modifie le pixel de coordonnées (x, y)
@@ -90,13 +91,18 @@ public:
     void effacer(Pixel couleur);
 
     /**
-     * @brief Sauvegarde l'instance de l'image en l'écrivant dans un fichier
+     * @brief Sauvegarde l'instance de l'image dans un fichier
      *
      * @param filename : String
      */
-    void sauver(const std::string &filename) const;
+    void sauver(const std::string& filename) const;
 
-    void ouvrir(const std::string &filename);
+    /**
+     * @brief Charge une image depuis un fichier
+     *
+     * @param filename : String
+     */
+    void ouvrir(const std::string& filename);
 
     /**
      * @brief Affiche les pixels de toute l'image dans la console
@@ -104,9 +110,8 @@ public:
     void afficherConsole();
 
     /**
-     * @brief Effectue une série de tests vérifiant que toutes les fonctions fonctionnent et
-     * font bien ce qu'elles sont censées faire, ainsi que les données membres de
-     * l'objets sont conformes
+     * @brief Effectue une série de tests de régression vérifiant que toutes les fonctions fonctionnent et
+     * font bien ce qu'elles sont censées faire, et que les données membres de l'objet sont conformes
      */
     static void testRegression();
 };
