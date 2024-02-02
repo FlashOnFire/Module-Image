@@ -34,8 +34,6 @@ add_executable(affichage
 target_include_directories(affichage PRIVATE
         ${SDL2_INCLUDE_DIRS}
         ${SDL2_IMAGE_INCLUDE_DIRS}
-        ${SDL2_MIXER_INCLUDE_DIRS}
-        ${SDL2_TTF_INCLUDE_DIRS}
 )
 
 if(WIN32)
@@ -54,6 +52,7 @@ endif()
 
 
 get_filename_component(PROJECT_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
-message("Chemin vers CMakeLists.txt : ${PROJECT_ROOT}")
+#message("Chemin vers CMakeLists.txt : ${PROJECT_ROOT}")
+
 #install(TARGETS module_image DESTINATION "${PROJECT_ROOT}/bin")
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_ROOT}/bin) # Workaround car le script d’évaluation ne fait pas de make install... après le build cmake...
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_ROOT}/bin)
