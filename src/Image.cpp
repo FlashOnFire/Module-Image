@@ -25,7 +25,7 @@ Image::~Image() {
     dimy = 0;
 }
 
-Pixel &Image::getPix(unsigned int x, unsigned int y) {
+Pixel& Image::getPix(unsigned int x, unsigned int y) {
     assert(x < dimx);
     assert(y < dimy);
 
@@ -62,7 +62,7 @@ void Image::effacer(Pixel couleur) {
     dessinerRectangle(0, 0, dimx, dimy, couleur);
 }
 
-void Image::sauver(const std::string &filename) const {
+void Image::sauver(const std::string& filename) const {
     std::ofstream fichier(filename.c_str());
     assert(fichier.is_open());
     fichier << "P3" << std::endl;
@@ -77,7 +77,7 @@ void Image::sauver(const std::string &filename) const {
     fichier.close();
 }
 
-void Image::ouvrir(const std::string &filename) {
+void Image::ouvrir(const std::string& filename) {
     std::ifstream fichier(filename.c_str());
     assert(fichier.is_open());
     char r, g, b;
@@ -106,7 +106,7 @@ void Image::afficherConsole() {
     std::cout << dimx << " " << dimy << std::endl;
     for (unsigned int y = 0; y < dimy; ++y) {
         for (unsigned int x = 0; x < dimx; ++x) {
-            Pixel &pix = getPix(x, y);
+            Pixel& pix = getPix(x, y);
             std::cout << '(' << +pix.r << " " << +pix.g << " " << +pix.b << ") ";
         }
         std::cout << std::endl;

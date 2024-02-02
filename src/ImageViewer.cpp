@@ -39,12 +39,12 @@ ImageViewer::~ImageViewer() {
     SDL_Quit();
 }
 
-void ImageViewer::afficher(Image im) {
+void ImageViewer::afficher(Image &im) {
     SDL_SetRenderDrawColor(renderer, 220, 220, 220, 255);
     SDL_RenderClear(renderer);
 
     if (surface != nullptr) {
-        SDL_FreeSurface(surface);
+        //SDL_FreeSurface(surface);
     }
 
     surface = SDL_CreateRGBSurfaceFrom(im.tab, im.dimx, im.dimy, 24, im.dimx * 3, 0, 0, 0, 0);
