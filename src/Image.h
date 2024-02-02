@@ -12,7 +12,8 @@ class ImageViewer;
  *
  * @brief Gère une image sous la forme d'un tableau de Pixels
  *
- * Permet de récuperer un pixel dans l'image, modifier un pixel, dessiner un rectangle avec un couleur et effacer l'image
+ * Permet de récuperer un pixel dans l'image, modifier un pixel, dessiner un rectangle avec un couleur, effacer l'image, afficher l'image,
+ * la sauvegarder dans un fichier et la charger dans un fichier
  */
 class Image {
 friend ImageViewer;
@@ -31,8 +32,8 @@ public:
      * @brief Initialise dimx et dimy (après vérification)
      * puis alloue le tableau de pixel sur le tas (image noire)
      *
-     * @param dimensionX : Entier
-     * @param dimensionY : Entier
+     * @param dimensionX : Entier naturel
+     * @param dimensionY : Entier naturel
      */
     Image(unsigned int dimensionX, unsigned int dimensionY);
 
@@ -45,8 +46,8 @@ public:
      * @brief Récupère le pixel original de coordonnées (x,y) en vérifiant sa validité.
      * La formule pour passer d'un tab 2D à un tab 1D est tab[y*dimx+x]
      *
-     * @param x : Entier
-     * @param y : Entier
+     * @param x : Entier naturel
+     * @param y : Entier naturel
      * @return Pixel (l'original, pas une copie)
      */
     Pixel& getPix(unsigned int x, unsigned int y);
@@ -54,8 +55,8 @@ public:
     /**
      * @brief Récupère le pixel original de coordonnées (x,y) en vérifiant sa validité.
      *
-     * @param x : Entier
-     * @param y : Entier
+     * @param x : Entier naturel
+     * @param y : Entier naturel
      * @return Une copie du Pixel
      */
     Pixel getPix(unsigned int x,unsigned int y) const;
@@ -63,8 +64,8 @@ public:
     /**
      * @brief Modifie le pixel de coordonnées (x, y)
      *
-     * @param x : Entier
-     * @param y : Entier
+     * @param x : Entier naturel
+     * @param y : Entier naturel
      * @param couleur Le nouveau pixel
      */
     void setPix(unsigned int x, unsigned int y, Pixel couleur);
@@ -72,10 +73,10 @@ public:
     /**
      * @brief Dessine un rectangle plein de la couleur dans l'image
      *
-     * @param Xmin : Entier
-     * @param Ymin : Entier
-     * @param Xmax : Entier
-     * @param Ymax : Entier
+     * @param Xmin : Entier naturel
+     * @param Ymin : Entier naturel
+     * @param Xmax : Entier naturel
+     * @param Ymax : Entier naturel
      * @param couleur : Pixel
      */
     void dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, Pixel couleur);
@@ -83,18 +84,26 @@ public:
     /**
      * @brief Efface l'image en la remplissant de la couleur en paramètre
      *
-     * @param Xmin : Entier
-     * @param Ymin : Entier
-     * @param Xmax : Entier
-     * @param Ymax : Entier
+     * @param Xmin : Entier naturel
+     * @param Ymin : Entier naturel
+     * @param Xmax : Entier naturel
+     * @param Ymax : Entier naturel
      * @param couleur : Pixel
      */
     void effacer(Pixel couleur);
 
+    /**
+     * @brief Sauvegarde l'instance de l'image en l'écrivant dans un fichier
+     *
+     * @param filename : String
+     */
     void sauver(const std::string &filename) const;
 
     void ouvrir(const std::string &filename);
 
+    /**
+     * @brief Affiche les pixels de toute l'image
+     */
     void afficherConsole();
 
     /**

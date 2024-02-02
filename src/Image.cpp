@@ -106,7 +106,7 @@ void Image::afficherConsole() {
     for (unsigned int y = 0; y < dimy; ++y) {
         for (unsigned int x = 0; x < dimx; ++x) {
             Pixel& pix = getPix(x, y);
-            std::cout << '(' << +pix.r << " " << +pix.g << " " << +pix.b << ") ";
+            pix.afficherPixel();
         }
         std::cout << std::endl;
     }
