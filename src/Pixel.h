@@ -25,8 +25,11 @@ struct Pixel {
     Pixel(unsigned char nr, unsigned char ng, unsigned char nb) : r(nr), g(ng), b(nb) {
     };
 
+    /**
+     * @brief Affiche les trois composantes de couleurs d'un pixel
+     */
     void afficherPixel() const {
-        std::cout << "(" << r << ", " << g << ", " << b << ")" << std::endl;
+        std::cout << "(" << +r << ", " << +g << ", " << +b << ") ";
     }
 };
 

@@ -10,11 +10,13 @@ int main() {
     image1.dessinerRectangle(0, 0, 1, 2, rouge);
     image1.setPix(1, 2, jaune);
     image1.setPix(2, 1, jaune);
+    image1.afficherConsole();
     image1.sauver("./data/image1.ppm");
     Image image2;
     image2.ouvrir("./data/image1.ppm");
+    image2.afficherConsole();
     image2.dessinerRectangle(0, 0, 1, 1, rouge);
-    image2.dessinerRectangle(1, 1, 2, 2, jaune);
+    image2.dessinerRectangle(1, 1, 3, 3, jaune);
     image2.sauver("./data/image2.ppm");
     image2.afficherConsole();
     std::cout << "main passé ! " << std::endl;
