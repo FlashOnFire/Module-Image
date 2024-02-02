@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Image.h"
 #include "cassert"
 #include "Pixel.h"
@@ -10,6 +11,7 @@ Image::Image() {
 
 Image::Image(const int dimensionX, const int dimensionY) : dimx(dimensionX), dimy(dimensionY) {
     tab = new Pixel[dimx * dimy];
+    dessinerRectangle(0, 0, dimx, dimy, Pixel());
 }
 
 Image::~Image() {
@@ -59,9 +61,12 @@ void Image::effacer(Pixel couleur) {
 
 void Image::testRegression() {
     Image testConstructeurDef;
-    const int dimensionX = 0;
-    const int dimensionY = 0;
+    const int dimensionX = 30;
+    const int dimensionY = 30;
     Image testConstructeurArg(dimensionX, dimensionY);
+
+    assert(testConstructeurArg.dimx == dimensionX);
+    assert(testConstructeurArg.dimy == dimensionY);
 
     Pixel blanc(255, 255, 255);
     Pixel rouge(255, 0, 0);
@@ -88,4 +93,6 @@ void Image::testRegression() {
     assert(testConstructeurArg.getPix(2, 2).r == 255);
     assert(testConstructeurArg.getPix(2, 2).g == 0);
     assert(testConstructeurArg.getPix(2, 2).b == 0);
+
+    std::cout << "Test de régression ok !" << std::endl;
 }
