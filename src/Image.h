@@ -12,8 +12,7 @@ class ImageViewer;
  *
  * @brief Gère une image sous la forme d'un tableau de Pixels
  *
- * Permet de récuperer un pixel dans l'image, modifier un pixel, dessiner un rectangle avec un couleur, effacer l'image, afficher l'image,
- * la sauvegarder dans un fichier et la charger dans un fichier
+ * S'occupe de la gestion de l'image
  */
 class Image {
 friend ImageViewer;
@@ -102,7 +101,7 @@ public:
     void ouvrir(const std::string &filename);
 
     /**
-     * @brief Affiche les pixels de toute l'image
+     * @brief Affiche les pixels de toute l'image dans la console
      */
     void afficherConsole();
 

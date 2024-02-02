@@ -1,5 +1,4 @@
 #include "ImageViewer.h"
-
 #include <iostream>
 
 ImageViewer::ImageViewer() {
