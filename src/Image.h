@@ -2,8 +2,10 @@
 #define _IMAGE_H
 
 
-#include "Pixel.h"
 #include <string>
+#include "Pixel.h"
+#include "ImageViewer.h"
+
 /**
  * @class Image
  *
@@ -12,6 +14,8 @@
  * Permet de récuperer un pixel dans l'image, modifier un pixel, dessiner un rectangle avec un couleur et effacer l'image
  */
 class Image {
+friend ImageViewer;
+
 private:
     Pixel* tab;
     unsigned int dimx, dimy;

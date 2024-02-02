@@ -18,6 +18,21 @@ add_executable(test
         src/Image.cpp
 )
 
+add_executable(exemple
+        src/mainExemple.cpp
+        src/Pixel.h
+        src/Image.h
+        src/Image.cpp
+)
+
+add_executable(affichage
+        src/mainAffichage.cpp
+        src/Pixel.h
+        src/Image.h
+        src/Image.cpp
+        src/ImageViewer.cpp
+)
+
 get_filename_component(PROJECT_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 message("Chemin vers CMakeLists.txt : ${PROJECT_ROOT}")
 #install(TARGETS module_image DESTINATION "${PROJECT_ROOT}/bin")
