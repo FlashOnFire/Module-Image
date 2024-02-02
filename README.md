@@ -24,8 +24,7 @@ Le repo se divise en plusieurs dossiers correspondant aux différentes parties d
 - ``build`` /todo
 - ``data`` contient les fichiers de sauvegarde en .ppm créés à partir de ce merveilleux module.
 - ``doc`` contient le DOXYFIlE /todo
-- ``src`` est le fichier de suppression valgrind pour retirer les faux positifs (ceux liés au driver nvidia sous
-  linux par exemple)
+- ``src`` contient les fichiers sources essentiels au bon fonctionnement du module
 
 ## Compilation
 
