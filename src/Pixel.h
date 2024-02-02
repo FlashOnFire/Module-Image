@@ -25,7 +25,7 @@ struct Pixel {
     Pixel(unsigned char nr, unsigned char ng, unsigned char nb) : r(nr), g(ng), b(nb) {
     };
 
-    void afficherPixel() {
+    void afficherPixel() const {
         std::cout << "(" << r << ", " << g << ", " << b << ")" << std::endl;
     }
 };
