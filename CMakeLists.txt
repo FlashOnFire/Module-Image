@@ -56,4 +56,4 @@ endif()
 get_filename_component(PROJECT_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 message("Chemin vers CMakeLists.txt : ${PROJECT_ROOT}")
 #install(TARGETS module_image DESTINATION "${PROJECT_ROOT}/bin")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_ROOT}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_ROOT}/bin) # Workaround car le script d’évaluation ne fait pas de make install... après le build cmake...
