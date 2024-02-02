@@ -16,10 +16,6 @@ Image::Image(const unsigned int dimensionX, const unsigned int dimensionY) : dim
 }
 
 Image::~Image() {
-    if (tab != nullptr) {
-        delete[] tab;
-        tab = nullptr;
-    }
     dimx = 0;
     dimy = 0;
 }
