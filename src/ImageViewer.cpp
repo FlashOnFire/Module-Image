@@ -46,7 +46,7 @@ void ImageViewer::afficher(const Image& im) {
         SDL_FreeSurface(surface);
     }
 
-    surface = SDL_CreateRGBSurfaceFrom(im.tab, im.dimx, im.dimy, 24, im.dimx * 3, 0, 0, 0, 0);
+    surface = SDL_CreateRGBSurfaceFrom(im.tab, im.dimx, im.dimy, 24, im.dimx * 3, 0x0000ff, 0x00ff00, 0xff0000, 0);
 
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
