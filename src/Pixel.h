@@ -2,6 +2,8 @@
 #define _PIXEL_H
 
 
+#include <iostream>
+
 struct Pixel {
     unsigned char r, g, b;
 
@@ -22,6 +24,10 @@ struct Pixel {
      */
     Pixel(unsigned char nr, unsigned char ng, unsigned char nb) : r(nr), g(ng), b(nb) {
     };
+
+    void afficherPixel() {
+        std::cout << "(" << r << ", " << g << ", " << b << ")" << std::endl;
+    }
 };
 
 
