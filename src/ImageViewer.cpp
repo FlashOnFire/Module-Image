@@ -9,7 +9,7 @@ ImageViewer::ImageViewer() {
         exit(1);
     }
 
-    window = SDL_CreateWindow("Pacman", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200,
+    window = SDL_CreateWindow("Module Image", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 200, 200,
                               SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
     if (window == nullptr) {
@@ -39,8 +39,7 @@ ImageViewer::~ImageViewer() {
 }
 
 void ImageViewer::afficher(const Image& im) {
-    SDL_SetRenderDrawColor(renderer, 220, 220, 220, 255);
-    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
 
     if (surface != nullptr) {
         SDL_FreeSurface(surface);
@@ -55,8 +54,12 @@ void ImageViewer::afficher(const Image& im) {
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     bool running = true;
+    float zoom = 1.0f;
+    SDL_Rect dstRect;
+
     SDL_Event e;
     while (running) {
+        SDL_RenderClear(renderer);
         if (SDL_PollEvent(&e)) {
             switch (e.type) {
                 case SDL_QUIT:
@@ -66,6 +69,12 @@ void ImageViewer::afficher(const Image& im) {
                     switch (e.key.keysym.sym) {
                         case SDLK_ESCAPE:
                             running = false;
+                        case SDLK_t:
+                            zoom += 0.25f;
+                            break;
+                        case SDLK_g:
+                            zoom -= 0.25f;
+                            break;
                         default:
                             break;
                     }
@@ -75,7 +84,13 @@ void ImageViewer::afficher(const Image& im) {
             }
         }
 
-        SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+
+        dstRect.w = im.dimx * zoom;
+        dstRect.h = im.dimy * zoom;
+        dstRect.x = 100.0 - dstRect.w / 2.0;
+        dstRect.y = 100.0 - dstRect.h / 2.0;
+
+        SDL_RenderCopy(renderer, texture, nullptr, &dstRect);
         SDL_RenderPresent(renderer);
     }
 }
