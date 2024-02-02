@@ -38,7 +38,7 @@ ImageViewer::~ImageViewer() {
     SDL_Quit();
 }
 
-void ImageViewer::afficher(const Image &im) {
+void ImageViewer::afficher(const Image& im) {
     SDL_SetRenderDrawColor(renderer, 220, 220, 220, 255);
     SDL_RenderClear(renderer);
 
@@ -54,7 +54,28 @@ void ImageViewer::afficher(const Image &im) {
 
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-    SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+    bool running = true;
+    SDL_Event e;
+    while (running) {
+        if (SDL_PollEvent(&e)) {
+            switch (e.type) {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+                case SDL_KEYDOWN:
+                    switch (e.key.keysym.sym) {
+                        case SDLK_ESCAPE:
+                            running = false;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
 
-    SDL_RenderPresent(renderer);
+        SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+        SDL_RenderPresent(renderer);
+    }
 }
