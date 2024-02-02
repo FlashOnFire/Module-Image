@@ -4,7 +4,8 @@
 
 #include <string>
 #include "Pixel.h"
-#include "ImageViewer.h"
+
+class ImageViewer;
 
 /**
  * @class Image

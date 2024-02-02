@@ -1,7 +1,6 @@
 #include "ImageViewer.h"
 
 #include <iostream>
-#include "Image.h"
 
 ImageViewer::ImageViewer() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {

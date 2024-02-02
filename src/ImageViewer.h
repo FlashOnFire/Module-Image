@@ -3,7 +3,7 @@
 
 
 #include <SDL2/SDL.h>
-class Image;
+#include "../Image.h"
 
 class ImageViewer {
 private:
