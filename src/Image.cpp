@@ -13,9 +13,14 @@ Image::Image() {
 
 Image::Image(const unsigned int dimensionX, const unsigned int dimensionY) : dimx(dimensionX), dimy(dimensionY) {
     tab = new Pixel[dimx * dimy];
+    dessinerRectangle(0, 0, dimx, dimy, Pixel());
 }
 
 Image::~Image() {
+    if (tab != nullptr) {
+        delete[] tab;
+        tab = nullptr;
+    }
     dimx = 0;
     dimy = 0;
 }
