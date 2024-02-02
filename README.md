@@ -1,7 +1,7 @@
 # Module Image
 
-Ce module image à été créé dans le cadre de l'UE LIFAPCD à Polytech Lyon en vue de s'exercer et d'apprendre à implémenter un
-programme avec la bibliothèque graphique SDL2
+Ce module image à été créé dans le cadre de l'UE LIFAPCD à Polytech Lyon en vue de s'exercer dans la conception d'application et d'apprendre à implémenter un
+programme permettant la gestion et l'affichage d'images avec la bibliothèque graphique SDL2
 
 ## Fonctionnalités
 
@@ -41,7 +41,7 @@ make
 
 La compilation n'a pas étée testée sous windows mais devrait fonctionner de la même façon...
 
-Les exécutables ``affichage``, ``exemple``  et ``./test`` seront créés dans le dossier ``bin`` du projet.
+Les exécutables ``affichage``, ``exemple``  et ``test`` seront créés dans le dossier ``bin`` du projet.
 
 ## Auteurs
 
