@@ -39,7 +39,7 @@ cd cmake-build-release
 make
 ```
 
-Et ``./Rashnawa`` pour lancer le programme
+Et ``./affichage``, ``./exemple``  ou ``./test`` pour lancer un des programmes
 
 ## Auteurs
 
