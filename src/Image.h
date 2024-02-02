@@ -3,11 +3,18 @@
 
 
 #include "Pixel.h"
-
+#include <string>
+/**
+ * @class Image
+ *
+ * @brief Gère une image sous la forme d'un tableau de Pixels
+ *
+ * Permet de récuperer un pixel dans l'image, modifier un pixel, dessiner un rectangle avec un couleur et effacer l'image
+ */
 class Image {
 private:
     Pixel* tab;
-    int dimx, dimy;
+    unsigned int dimx, dimy;
 public:
     /**
      * @brief Initialise dimx et dim y à 0
@@ -22,7 +29,7 @@ public:
      * @param dimensionX : Entier
      * @param dimensionY : Entier
      */
-    Image(int dimensionX, int dimensionY);
+    Image(unsigned int dimensionX, unsigned int dimensionY);
 
     /**
      * @brief Désallocation de la mémoire du tableau de pixels et mise a jour des champs dimX et dimY à 0
@@ -37,7 +44,7 @@ public:
      * @param y : Entier
      * @return Pixel (l'original, pas une copie)
      */
-    Pixel& getPix(int x, int y);
+    Pixel& getPix(unsigned int x, unsigned int y);
 
     /**
      * @brief Récupère le pixel original de coordonnées (x,y) en vérifiant sa validité.
@@ -46,7 +53,7 @@ public:
      * @param y : Entier
      * @return Une copie du Pixel
      */
-    Pixel getPix(int x, int y) const;
+    Pixel getPix(unsigned int x,unsigned int y) const;
 
     /**
      * @brief Modifie le pixel de coordonnées (x, y)
@@ -55,7 +62,7 @@ public:
      * @param y : Entier
      * @param couleur Le nouveau pixel
      */
-    void setPix(int x, int y, Pixel couleur);
+    void setPix(unsigned int x, unsigned int y, Pixel couleur);
 
     /**
      * @brief Dessine un rectangle plein de la couleur dans l'image
@@ -66,7 +73,7 @@ public:
      * @param Ymax : Entier
      * @param couleur : Pixel
      */
-    void dessinerRectangle(int Xmin, int Ymin, int Xmax, int Ymax, Pixel couleur);
+    void dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, Pixel couleur);
 
     /**
      * @brief Efface l'image en la remplissant de la couleur en paramètre
@@ -78,6 +85,12 @@ public:
      * @param couleur : Pixel
      */
     void effacer(Pixel couleur);
+
+    void sauver(const std::string &filename) const;
+
+    void ouvrir(const std::string &filename);
+
+    void afficherConsole();
 
     /**
      * @brief Effectue une série de tests vérifiant que toutes les fonctions fonctionnent et

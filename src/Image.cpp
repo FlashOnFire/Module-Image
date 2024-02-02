@@ -1,7 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include "Image.h"
 #include "cassert"
 #include "Pixel.h"
+#include "iostream"
 
 Image::Image() {
     dimx = 0;
@@ -9,7 +11,7 @@ Image::Image() {
     tab = nullptr;
 }
 
-Image::Image(const int dimensionX, const int dimensionY) : dimx(dimensionX), dimy(dimensionY) {
+Image::Image(const unsigned int dimensionX, const unsigned int dimensionY) : dimx(dimensionX), dimy(dimensionY) {
     tab = new Pixel[dimx * dimy];
     dessinerRectangle(0, 0, dimx, dimy, Pixel());
 }
@@ -23,33 +25,34 @@ Image::~Image() {
     dimy = 0;
 }
 
-Pixel& Image::getPix(int x, int y) {
-    assert(x >= 0 && x < dimx);
-    assert(y >= 0 && y < dimy);
+Pixel &Image::getPix(unsigned int x, unsigned int y) {
+    assert(x < dimx);
+    assert(y < dimy);
 
     return tab[y * dimx + x];
 }
 
-Pixel Image::getPix(int x, int y) const {
-    assert(x >= 0 && x < dimx);
-    assert(y >= 0 && y < dimy);
+Pixel Image::getPix(unsigned int x, unsigned int y) const {
+    assert(x < dimx);
+    assert(y < dimy);
 
     return tab[y * dimx + x];
 }
 
-void Image::setPix(int x, int y, Pixel couleur) {
-    assert(x >= 0 && x < dimx);
-    assert(y >= 0 && y < dimy);
+void Image::setPix(unsigned int x, unsigned int y, Pixel couleur) {
+    assert(x < dimx);
+    assert(y < dimy);
 
     tab[y * dimx + x] = couleur;
 }
 
-void Image::dessinerRectangle(int Xmin, int Ymin, int Xmax, int Ymax, Pixel couleur) {
-    assert(Xmin >= 0 && Xmax <= dimx);
-    assert(Ymin >= 0 && Ymax <= dimy);
+void
+Image::dessinerRectangle(unsigned int Xmin, unsigned int Ymin, unsigned int Xmax, unsigned int Ymax, Pixel couleur) {
+    assert(Xmax <= dimx);
+    assert(Ymax <= dimy);
 
-    for (int y = Ymin; y < Ymax; y++) {
-        for (int x = Xmin; x < Xmax; x++) {
+    for (unsigned int y = Ymin; y < Ymax; y++) {
+        for (unsigned int x = Xmin; x < Xmax; x++) {
             setPix(x, y, couleur);
         }
     }
@@ -58,6 +61,58 @@ void Image::dessinerRectangle(int Xmin, int Ymin, int Xmax, int Ymax, Pixel coul
 void Image::effacer(Pixel couleur) {
     dessinerRectangle(0, 0, dimx, dimy, couleur);
 }
+
+void Image::sauver(const std::string &filename) const {
+    std::ofstream fichier(filename.c_str());
+    assert(fichier.is_open());
+    fichier << "P3" << std::endl;
+    fichier << dimx << " " << dimy << std::endl;
+    fichier << "255" << std::endl;
+    for (unsigned int y = 0; y < dimy; ++y)
+        for (unsigned int x = 0; x < dimx; ++x) {
+            Pixel pix = getPix(x, y);
+            fichier << +pix.r << " " << +pix.g << " " << +pix.b << " ";
+        }
+    std::cout << "Sauvegarde de l'image " << filename << " ... OK\n";
+    fichier.close();
+}
+
+void Image::ouvrir(const std::string &filename) {
+    std::ifstream fichier(filename.c_str());
+    assert(fichier.is_open());
+    char r, g, b;
+    std::string mot;
+    dimx = dimy = 0;
+    fichier >> mot >> dimx >> dimy >> mot;
+    assert(dimx > 0 && dimy > 0);
+
+    if (tab != nullptr) {
+        delete[] tab;
+    }
+
+    tab = new Pixel[dimx * dimy];
+    for (unsigned int y = 0; y < dimy; ++y) {
+        for (unsigned int x = 0; x < dimx; ++x) {
+            fichier >> r >> g >> b;
+            setPix(x, y, Pixel(r, g, b));
+        }
+    }
+
+    fichier.close();
+    std::cout << "Lecture de l'image " << filename << " ... OK\n";
+}
+
+void Image::afficherConsole() {
+    std::cout << dimx << " " << dimy << std::endl;
+    for (unsigned int y = 0; y < dimy; ++y) {
+        for (unsigned int x = 0; x < dimx; ++x) {
+            Pixel &pix = getPix(x, y);
+            std::cout << +pix.r << " " << +pix.g << " " << +pix.b << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 
 void Image::testRegression() {
     Image testConstructeurDef;

@@ -10,11 +10,19 @@ find_package(SDL2_image CONFIG REQUIRED)
 find_package(SDL2_ttf CONFIG REQUIRED)
 
 
+#add_executable(test
+#        src/mainTest.cpp
+#        src/Pixel.h
+#        src/Image.h
+#        src/Image.cpp
+#)
+
 add_executable(test
-        src/mainTest.cpp
+        src/mainExemple.cpp
         src/Pixel.h
         src/Image.h
         src/Image.cpp
+
 )
 
 get_filename_component(PROJECT_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
