@@ -41,8 +41,7 @@ public:
     ~Image();
 
     /**
-     * @brief Récupère le pixel original de coordonnées (x,y) en vérifiant sa validité.
-     * La formule pour passer d'un tab 2D à un tab 1D est tab[y*dimx+x]
+     * @brief Récupère le pixel original de coordonnées (x,y)
      *
      * @param x : Entier naturel
      * @param y : Entier naturel
@@ -51,7 +50,7 @@ public:
     Pixel& getPix(unsigned int x, unsigned int y);
 
     /**
-     * @brief Récupère le pixel original de coordonnées (x,y) en vérifiant sa validité.
+     * @brief Récupère le pixel original aux coordonnées (x,y)
      *
      * @param x : Entier naturel
      * @param y : Entier naturel
@@ -60,7 +59,7 @@ public:
     Pixel getPix(unsigned int x, unsigned int y) const;
 
     /**
-     * @brief Modifie le pixel de coordonnées (x, y)
+     * @brief Modifie le pixel aux coordonnées (x, y)
      *
      * @param x : Entier naturel
      * @param y : Entier naturel
@@ -69,7 +68,7 @@ public:
     void setPix(unsigned int x, unsigned int y, Pixel couleur);
 
     /**
-     * @brief Dessine un rectangle plein de la couleur dans l'image
+     * @brief Dessine un rectangle plein de la couleur donnée sur l'image
      *
      * @param Xmin : Entier naturel
      * @param Ymin : Entier naturel
@@ -82,10 +81,6 @@ public:
     /**
      * @brief Efface l'image en la remplissant de la couleur en paramètre
      *
-     * @param Xmin : Entier naturel
-     * @param Ymin : Entier naturel
-     * @param Xmax : Entier naturel
-     * @param Ymax : Entier naturel
      * @param couleur : Pixel
      */
     void effacer(Pixel couleur);
