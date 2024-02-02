@@ -68,7 +68,7 @@ public:
     void setPix(unsigned int x, unsigned int y, Pixel couleur);
 
     /**
-     * @brief Dessine un rectangle plein de la couleur donnée sur l'image
+     * @brief Dessine un rectangle plein, de la couleur donnée, sur l'image
      *
      * @param Xmin : Entier naturel
      * @param Ymin : Entier naturel
