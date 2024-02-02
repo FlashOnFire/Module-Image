@@ -53,6 +53,9 @@ void ImageViewer::afficher(const Image& im) {
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     bool running = true;
+    int windowWidth;
+    int windowHeight;
+
     float zoom = 1.0f;
     SDL_Rect dstRect;
 
@@ -83,10 +86,12 @@ void ImageViewer::afficher(const Image& im) {
             }
         }
 
+        SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
+
         dstRect.w = static_cast<int>(static_cast<float>(im.dimx) * zoom);
         dstRect.h = static_cast<int>(static_cast<float>(im.dimy) * zoom);
-        dstRect.x = static_cast<int>(100.0 - dstRect.w / 2.0);
-        dstRect.y = static_cast<int>(100.0 - dstRect.h / 2.0);
+        dstRect.x = static_cast<int>(windowWidth / 2.0 - dstRect.w / 2.0);
+        dstRect.y = static_cast<int>(windowHeight / 2.0 - dstRect.h / 2.0);
 
         SDL_RenderCopy(renderer, texture, nullptr, &dstRect);
         SDL_RenderPresent(renderer);
