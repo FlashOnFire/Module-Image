@@ -39,7 +39,7 @@ ImageViewer::~ImageViewer() {
     SDL_Quit();
 }
 
-void ImageViewer::afficher(Image &im) {
+void ImageViewer::afficher(const Image &im) {
     SDL_SetRenderDrawColor(renderer, 220, 220, 220, 255);
     SDL_RenderClear(renderer);
 

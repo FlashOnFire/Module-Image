@@ -17,7 +17,7 @@ public:
 
     ~ImageViewer();
 
-    void afficher(Image &im);
+    void afficher(const Image &im);
 };
 
 
