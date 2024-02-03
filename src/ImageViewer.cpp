@@ -38,13 +38,19 @@ ImageViewer::~ImageViewer() {
 }
 
 void ImageViewer::afficher(const Image& im) {
-    SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+    const int imageWidth = static_cast<int>(im.dimx);
+    const int imageHeight = static_cast<int>(im.dimy);
 
     if (surface != nullptr) {
         SDL_FreeSurface(surface);
     }
 
-    surface = SDL_CreateRGBSurfaceFrom(im.tab, static_cast<int>(im.dimx), static_cast<int>(im.dimy), 24, static_cast<int>(im.dimx) * 3, 0x0000ff, 0x00ff00, 0xff0000, 0);
+    Uint32 redMask, greenMask, blueMask, alphaMask;
+    int bytesPerPixel;
+    SDL_PixelFormatEnumToMasks(SDL_PixelFormatEnum::SDL_PIXELFORMAT_RGB24, &bytesPerPixel, &redMask, &greenMask, &blueMask, &alphaMask);
+
+    surface = SDL_CreateRGBSurfaceFrom(im.tab, imageWidth, imageHeight, bytesPerPixel,
+                                       imageWidth * 3, redMask, greenMask, blueMask, alphaMask);
 
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
@@ -60,6 +66,8 @@ void ImageViewer::afficher(const Image& im) {
     SDL_Rect dstRect;
 
     SDL_Event e;
+
+    SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
     while (running) {
         SDL_RenderClear(renderer);
         if (SDL_PollEvent(&e)) {
@@ -88,8 +96,8 @@ void ImageViewer::afficher(const Image& im) {
 
         SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
-        dstRect.w = static_cast<int>(static_cast<float>(im.dimx) * zoom);
-        dstRect.h = static_cast<int>(static_cast<float>(im.dimy) * zoom);
+        dstRect.w = static_cast<int>(static_cast<float>(imageWidth) * zoom);
+        dstRect.h = static_cast<int>(static_cast<float>(imageHeight) * zoom);
         dstRect.x = static_cast<int>(windowWidth / 2.0 - dstRect.w / 2.0);
         dstRect.y = static_cast<int>(windowHeight / 2.0 - dstRect.h / 2.0);
 
